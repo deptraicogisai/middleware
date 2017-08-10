@@ -40,11 +40,11 @@ export class Home extends React.Component<any, HState> {
                     subMenus: [
                         {
                             headerText: 'Post',
-                            link: '/admin'
+                            link: '/'
                         },
                         {
                             headerText: 'Photos',
-                            link: '/admin/photos'
+                            link: '/photos'
                         }
                     ]
                 },

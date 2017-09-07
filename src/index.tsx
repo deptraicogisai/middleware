@@ -8,17 +8,15 @@ import store from "./store/store";
 import {Provider} from 'react-redux';
 import PostComponent from "./component/PostComponent";
 import BookSearchComponent from "./component/BookSearchComponent";
-import {DanangCam} from "./component/danang-cam";
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path='/' component={Home} name="Home">
+            <Route path='/middleware' component={Home} name="Home">
                 <IndexRoute component={PostComponent} name="Posts"/>
-                <Route path='/photos' component={PhotoComponent} name="Photos"/>
-                <Route path='/book-search' component={BookSearchComponent} name="Book-Search"/>
-                <Route path='/danang-cam' component={DanangCam} name="DaNangCamera"/>
-                <Route path='/detail/:id' component={PostDetail} name="Detail"/>
+                <Route path='/middleware/photos' component={PhotoComponent} name="Photos"/>
+                <Route path='/middleware/book-search' component={BookSearchComponent} name="Book-Search"/>
+                <Route path='/middleware/detail/:id' component={PostDetail} name="Detail"/>
             </Route>
         </Router>
     </Provider>,

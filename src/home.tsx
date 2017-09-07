@@ -42,15 +42,15 @@ export class Home extends React.Component<any, HState> {
                     subMenus: [
                         {
                             headerText: 'Post',
-                            link: '/'
+                            link: '/middleware'
                         },
                         {
                             headerText: 'Photos',
-                            link: '/photos'
+                            link: '/middleware/photos'
                         },
                         {
                             headerText: 'Book Search',
-                            link: '/book-search'
+                            link: '/middleware/book-search'
                         }
                         ,
                         {

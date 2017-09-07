@@ -3,22 +3,43 @@
 <head>
     <meta charset="UTF-8"/>
     <title></title>
+    <!-- If you'd like to support IE8 -->
 </head>
 <body style="padding: 10px">
 <div class="container" style="margin: 10px">
+    <video id="my-video" class="video-js" controls preload="auto" width="600" height="264"
+           data-setup="{}">
+        <source src="http://2co2.vp9.tv/chn/DNG14/v.m3u8" type='application/x-mpegURL' />
+    </video>
     <div id="example"></div>
 </div>
 
 <!-- Dependencies -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="src/style.css"/>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="./node_modules/react/dist/react.js"></script>
 <script src="./node_modules/react-dom/dist/react-dom.js"></script>
-<link rel="stylesheet" href="./node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css" >
+<script src="src/scripts/jquery.flexslider.js"></script>
+<script src="http://vjs.zencdn.net/6.2.5/video.js"></script>
+<script src="src/scripts/videojs-contrib-hls.js"></script>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="src/style.css"/>
+<link rel="stylesheet" href="src/flexslider.css"/>
+<link rel="stylesheet" href="./node_modules/react-image-gallery/styles/css/image-gallery-no-icon.css" >
+<link rel="stylesheet" href="http://vjs.zencdn.net/6.2.5/video-js.css"/>
+<link rel="stylesheet" href="https://video-react.github.io/assets/video-react.css" />
 <!-- Main -->
 <script src="./dist/application/app.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.flexslider').flexslider({
+            animation: "fade",
+            direction: "vertical"
+        });
+    });
+</script>
 </body>
 </html>

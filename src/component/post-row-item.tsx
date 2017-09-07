@@ -11,7 +11,7 @@ export class PostRowItem extends React.Component<TRowProp, {}> {
         return (
             <tr>
                 <td>
-                    <Link to={`/detail/${this.props.post.id}`}>{this.props.post.id}</Link>
+                    <Link to={`/admin/detail/${this.props.post.id}`}>{this.props.post.id}</Link>
                 </td>
                 <td>
                     {this.props.post.userId}

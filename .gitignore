@@ -2,9 +2,12 @@
 
 # dependencies
 node_modules
+dist
+
 
 # testing
 coverage
+
 
 # production
 build
@@ -14,3 +17,5 @@ build
 .env
 npm-debug.log
 
+.idea/inspectionProfiles/
+.idea

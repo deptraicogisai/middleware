@@ -9,4 +9,9 @@ export const DO_DETAIL = "DO_DETAIL";
 export const VIEW_DETAIL = "VIEW_DETAIL";
 
 export const BLOCKING = "BLOCKING";
-export const UNBLOCKING = "UNBLOCKING";
+export const UNBLOCKING = "UNBLOCKING"
+
+export const SEARCH_BOOK = "SEARCH_BOOK";
+export const SEARCH_BOOK_COMPLETED = "SEARCH_BOOK_COMPLETED";
+
+export const RESET_STATE = "RESET_STATE";

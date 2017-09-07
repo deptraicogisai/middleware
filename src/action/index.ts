@@ -1,5 +1,5 @@
 import {FetchData} from "./postAction";
 
-export default {
+export {
     FetchData
 }

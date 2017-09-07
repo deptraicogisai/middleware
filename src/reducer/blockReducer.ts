@@ -2,18 +2,16 @@ import * as Constant from '../constant/actionTypes'
 
 
 interface thisState {
-    block: boolean
+    isLoading: boolean
 }
 
-export default function (state: thisState = {block: false}, action) {
+export default function (state: thisState = {isLoading: false}, action) {
     switch (action.type) {
         case Constant.BLOCKING:
-            state.block = true;
-            break;
+            return Object.assign({}, state, {isLoading: true})
 
         case Constant.UNBLOCKING:
-            state.block = false;
-            break;
+            return Object.assign({}, state, {isLoading: false})
     }
 
     return state;

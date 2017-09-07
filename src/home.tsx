@@ -4,12 +4,14 @@ import {Notification} from 'react-notification';
 import blockStore from "./store/blockStore";
 import {MenuItem} from "./model/MenuItem";
 import {Sidebar} from "./component/side-bar";
-
+import {Header} from "./component/header";
+import ReactImageMagnify from 'react-image-magnify';
 
 interface HState {
     isActive: boolean,
     block: boolean,
-    menus: MenuItem[]
+    menus: MenuItem[],
+    images: string[]
 }
 
 export class Home extends React.Component<any, HState> {
@@ -45,6 +47,15 @@ export class Home extends React.Component<any, HState> {
                         {
                             headerText: 'Photos',
                             link: '/photos'
+                        },
+                        {
+                            headerText: 'Book Search',
+                            link: '/book-search'
+                        }
+                        ,
+                        {
+                            headerText: 'Camera Da Nang',
+                            link: '/danang-cam'
                         }
                     ]
                 },
@@ -62,22 +73,46 @@ export class Home extends React.Component<any, HState> {
                             headerText: 'Button'
                         }
                     ]
-                }
+                },
+            ],
+            images: [
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
+                'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
             ]
         })
 
         blockStore.subscribe(() => {
             let state = blockStore.getState();
 
-            this.setState({
-                block: state.block
-            })
         })
     }
 
     render() {
         return (
             <div>
+                <Header/>
+                <br/>
+                {/*<div className="fluid">*/}
+                {/*<div className="fluid__image-container">*/}
+                {/*<ReactImageMagnify {...{*/}
+                {/*largeImage: {*/}
+                {/*alt: '',*/}
+                {/*src: 'https://ethanselzer.github.io/react-image-magnify/static/media/wristwatch_584.74be83b4.jpg',*/}
+                {/*width: 900,*/}
+                {/*height: 1500*/}
+                {/*},*/}
+                {/*smallImage: {*/}
+                {/*alt: 'Wristwatch by Ted Baker London',*/}
+                {/*src: 'https://ethanselzer.github.io/react-image-magnify/static/media/wristwatch_584.74be83b4.jpg',*/}
+                {/*width: 300,*/}
+                {/*height: 400*/}
+                {/*}*/}
+                {/*}} />*/}
+
+                {/*</div>*/}
+                {/*</div>*/}
                 <div className="row">
                     <div className="col-md-4">
                         <Scrollbars style={{height: 400}}>
@@ -86,6 +121,20 @@ export class Home extends React.Component<any, HState> {
                     </div>
                     <div className="col-md-8">
                         {this.props.children}
+                    </div>
+                </div>
+                <div className="col-md-8">
+                    <div id="slider" className="flexslider">
+                        <ul className="slides">
+                            {
+                                this.state.images.map((item, index) => {
+                                    return <li key={index}>
+                                        <img
+                                            src={item}/>
+                                    </li>
+                                })
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>

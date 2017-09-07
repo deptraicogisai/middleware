@@ -1,7 +1,6 @@
-
 module.exports = {
     entry: {
-        app: ['babel-polyfill', 'whatwg-fetch', "./src/index.tsx"]
+        app: ['babel-polyfill', "./src/index.tsx"]
     },
     output: {
         path: __dirname + "/dist/application",
@@ -10,7 +9,10 @@ module.exports = {
     },
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+        modules: [
+            'node_modules'
+        ]
     },
     module: {
         rules: [
@@ -22,6 +24,10 @@ module.exports = {
                 test: /\.js$/,
                 enforce: "pre",
                 loader: "source-map-loader"
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             }
         ]
     },

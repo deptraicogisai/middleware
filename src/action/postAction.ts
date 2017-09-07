@@ -9,3 +9,9 @@ export const ViewDetail = (id: number) => ({
     type: Constant.DO_DETAIL,
     id: id
 });
+
+export const ResetState = () => {
+    return {
+        type: Constant.RESET_STATE
+    }
+}

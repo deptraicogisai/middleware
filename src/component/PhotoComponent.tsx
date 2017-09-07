@@ -1,52 +1,33 @@
 import * as React from 'react'
 import {Photo} from "../model/photo";
-import store from "../store/photoStore";
-import {PhotoRowItem}  from "./photo-row-item";
-import {FetchData} from "../action/photoAction";
-import blockStore from "../store/blockStore";
-import {Blocking, UnBlocking} from "../action/blockAction";
-
+import {PhotoRowItem} from "./photo-row-item";
+import {FetchData, ResetState} from "../action/photoAction";
+import {Blocking} from "../action/blockAction";
+import {connect} from 'react-redux';
 
 interface thisState {
-    photos: Photo[],
     images: any,
+}
+
+interface thisProps {
+    photos: Photo[],
     isLoading: boolean
 }
 
-export class PhotoComponent extends React.Component<{}, thisState> {
+class PhotoComponent extends React.Component<thisProps, thisState> {
 
     handleImageLoad(event) {
         console.log('Image loaded ', event.target)
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        this.props.FetchData();
 
-        this.setState({
-            photos: [],
-            isLoading: false
-        })
-
-        store.subscribe(
-            () => {
-                let state = store.getState();
-                this.setState({
-                    photos: state.data,
-                    isLoading: false
-                })
-
-                blockStore.dispatch(UnBlocking());
-            }
-        )
+        this.props.Blocking();
     }
 
-    componentDidMount() {
-        store.dispatch(FetchData());
-
-        blockStore.dispatch(Blocking());
-
-        this.setState({
-            isLoading: true
-        })
+    componentWillUnmount() {
+        this.props.ResetState();
     }
 
     render() {
@@ -65,12 +46,12 @@ export class PhotoComponent extends React.Component<{}, thisState> {
                             </thead>
                             <tbody>
                             {
-                                this.state.photos && this.state.photos.length > 0 ?
-                                    this.state.photos.map((item, index) => {
+                                this.props.photos && this.props.photos.length > 0 ?
+                                    this.props.photos.map((item, index) => {
                                         return <PhotoRowItem photo={item} key={index}/>
-                                    }) : this.state.isLoading ?
+                                    }) : this.props.isLoading ?
                                     <div className="loader"
-                                         style={{'display': this.state.isLoading ? 'block' : 'none'}}></div>
+                                         style={{'display': this.props.isLoading ? 'block' : 'none'}}></div>
                                     : <span>No Records</span>
                             }
                             </tbody>
@@ -82,3 +63,27 @@ export class PhotoComponent extends React.Component<{}, thisState> {
     }
 }
 
+const bindActionsToDispatch = dispatch =>
+    (
+        {
+            fetchData: () => {
+                dispatch(FetchData())
+            },
+
+            block: () => {
+                dispatch(Blocking());
+            }
+        }
+    );
+
+const mapStateToProps = (state) => ({
+    photos: state.photos.photos,
+    isLoading: state.block.isLoading
+})
+
+//export default connect(mapStateToProps, bindActionsToDispatch)(PhotoComponent);
+export default connect(({photos, block}) => ({photos: photos.photos, isLoading: block.isLoading}), {
+    FetchData,
+    ResetState,
+    Blocking
+})(PhotoComponent);

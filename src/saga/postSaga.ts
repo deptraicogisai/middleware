@@ -1,12 +1,17 @@
 import * as Constant from '../constant/actionTypes'
 import {put, takeLatest, call} from 'redux-saga/effects';
-import {PostServiceInstance} from "../service/fetch-service";
+import {FetchDataServiceInstance} from "../service/fetch-service";
+import {hideLoading, showLoading} from "react-redux-loading-bar";
 
 function* getPosts(action) {
     try {
-        const result = yield call(PostServiceInstance.GetListPost);
+        yield  put(showLoading());
 
-        yield put({type: Constant.FETCH_DATA_SUCCESS, responseData: result});
+        const result = yield call(FetchDataServiceInstance.GetListPost);
+
+        yield put({type: Constant.FETCH_DATA_SUCCESS, posts: result});
+
+        yield  put(hideLoading());
     } catch (error) {
         put({type: Constant.FETCH_DATA_FAIL})
     }
@@ -14,7 +19,7 @@ function* getPosts(action) {
 
 function* getDetailPost(action) {
     try {
-        const result = yield call(PostServiceInstance.ViewDetail, action.id);
+        const result = yield call(FetchDataServiceInstance.ViewDetail, action.id);
 
         yield put({type: Constant.VIEW_DETAIL, detail: result});
     } catch (error) {

@@ -42,9 +42,6 @@ export class DanangCam extends React.Component<{}, thisState> {
         return (
             <div>
                 <div>
-                    {/*<Player>*/}
-                        {/*<HLSSource isVideoChild type="application/x-mpegURL" src="http://2co2.vp9.tv/chn/DNG14/v.m3u8"/>*/}
-                    {/*</Player>*/}
                     <div data-vjs-player>
                     <video className="video-js" controls width="600" height="264"></video>
                     </div>

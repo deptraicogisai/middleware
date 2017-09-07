@@ -94,25 +94,7 @@ export class Home extends React.Component<any, HState> {
             <div>
                 <Header/>
                 <br/>
-                {/*<div className="fluid">*/}
-                {/*<div className="fluid__image-container">*/}
-                {/*<ReactImageMagnify {...{*/}
-                {/*largeImage: {*/}
-                {/*alt: '',*/}
-                {/*src: 'https://ethanselzer.github.io/react-image-magnify/static/media/wristwatch_584.74be83b4.jpg',*/}
-                {/*width: 900,*/}
-                {/*height: 1500*/}
-                {/*},*/}
-                {/*smallImage: {*/}
-                {/*alt: 'Wristwatch by Ted Baker London',*/}
-                {/*src: 'https://ethanselzer.github.io/react-image-magnify/static/media/wristwatch_584.74be83b4.jpg',*/}
-                {/*width: 300,*/}
-                {/*height: 400*/}
-                {/*}*/}
-                {/*}} />*/}
 
-                {/*</div>*/}
-                {/*</div>*/}
                 <div className="row">
                     <div className="col-md-4">
                         <Scrollbars style={{height: 400}}>
